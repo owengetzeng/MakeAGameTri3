@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "MakeAGameTri3.sln"
+    "dotnet.defaultSolution": "MakeAGameTri3.slnx"
 }

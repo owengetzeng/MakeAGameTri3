@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private float moveSpeed = 8f;
     [SerializeField] private float lifetime = 4f;
+    [SerializeField] private float damage = 25f;
 
     private Rigidbody2D _rigidbody;
     private Vector2 _direction;
@@ -40,9 +41,10 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<EnemyController>() != null)
+        HealthComponent enemyHealth = other.GetComponent<HealthComponent>();
+        if (other.GetComponent<EnemyController>() != null && enemyHealth != null)
         {
-            Destroy(other.gameObject);
+            enemyHealth.TakeDamage(damage);
             Destroy(gameObject);
         }
     }
